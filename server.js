@@ -15,9 +15,12 @@ app.use(express.json());
     MongoDB Connection
 ========================= */
 
-mongoose.connect("mongodb+srv://csvinesh6_db_user:vinesh123@codenestdb.ez2vnh2.mongodb.net/CodeNestDB?retryWrites=true&w=majority")
+mongoose.connect(process.env.MONGO_URI)
 .then(() => console.log("MongoDB Connected 🔥"))
 .catch(err => console.log(err));
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log("Server Running"));
 
 /* =========================
     User Schema
